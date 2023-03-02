@@ -1,6 +1,8 @@
 package com.example.notes.domain.model
 
-data class Note(
+import javax.inject.Inject
+
+data class Note (
     val id : Int = DEFAULT_ID,
     val title : String,
     val description : String,

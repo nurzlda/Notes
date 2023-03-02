@@ -4,7 +4,7 @@ import com.example.notes.domain.model.Note
 import com.example.notes.domain.repository.NoteRepository
 import javax.inject.Inject
 
-class EditNoteUseCase(
+class EditNoteUseCase @Inject constructor(
     private val noteRepository: NoteRepository
 ) {
     fun editNote(note: Note) = noteRepository.editNote(note)
