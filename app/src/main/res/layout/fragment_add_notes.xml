@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.addNotes.AddNotesFragment"
+    android:orientation="vertical">
+
+ <EditText
+     android:layout_marginTop="44dp"
+     android:layout_marginHorizontal="8dp"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:hint="@string/Введите_вашу_заметку"
+     android:textSize="24sp"/>
+
+    <EditText
+        android:layout_marginTop="24dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/Введите_вашу_заметку"
+        android:textSize="24sp"/>
+
+    <Button
+        app:cornerRadius="32dp"
+        android:backgroundTint="@color/teal_700"
+        android:paddingVertical="12dp"
+        android:paddingHorizontal="32dp"
+        android:text="@string/save_data"
+        android:layout_marginTop="24dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
