@@ -5,9 +5,9 @@ import com.example.notes.units.ResultStatus
 import kotlinx.coroutines.flow.Flow
 
 interface NoteRepository {
-    fun createNote(note: Note) : Flow<ResultStatus<Unit>>
+    fun createNote(note: Note): Flow<ResultStatus<Unit>>
 
-    fun getAllNotes() : Flow<ResultStatus<List<Note>>>
+    fun getAllNotes(): Flow<ResultStatus<List<Note>>>
 
     fun editNote(note: Note): Flow<ResultStatus<Unit>>
 

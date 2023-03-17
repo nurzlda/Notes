@@ -5,4 +5,7 @@
     <string name="fab">FAB</string>
     <string name="Введите_вашу_заметку">Введите вашу заметку</string>
     <string name="save_data">save data</string>
+    <string name="deleted">Note successfully deleted</string>
+    <string name="created">Note successfully created</string>
+    <string name="updated">Note successfully updated</string>
 </resources>

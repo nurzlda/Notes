@@ -13,5 +13,5 @@ import javax.inject.Singleton
 abstract class RepositoryModule {
     @Binds
     @Singleton
-    abstract fun noteRepository(noteRepositoryImpl: NoteRepositoryImpl) : NoteRepository
+    abstract fun noteRepository(noteRepositoryImpl: NoteRepositoryImpl): NoteRepository
 }

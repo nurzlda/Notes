@@ -1,42 +1,36 @@
 package com.example.notes.presentation.notes
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import com.example.notes.data.base.BaseViewModel
 import com.example.notes.domain.model.Note
+import com.example.notes.domain.usecase.DeleteNoteUseCase
 import com.example.notes.domain.usecase.GetAllNotesUseCase
-import com.example.notes.units.ResultStatus
-import dagger.hilt.android.HiltAndroidApp
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@HiltAndroidApp
+@HiltViewModel
 class NotesViewModel @Inject constructor(
     private val getAllNotesUseCase: GetAllNotesUseCase,
-) : ViewModel() {
+    private val deleteNoteUseCase: DeleteNoteUseCase
+
+) : BaseViewModel() {
+
+
 
     private val _notesState = MutableStateFlow<UiState<List<Note>>>(UiState.Empty())
-    val noteState = _notesState.asStateFlow()
+    val getAllNoteState = _notesState.asStateFlow()
+    private val _deleteNoteState =MutableStateFlow<UiState<Unit>>(UiState.Empty())
+    val deleteNoteState = _deleteNoteState.asStateFlow()
 
-    fun getAllNotes(){
-       viewModelScope.launch {
-           getAllNotesUseCase.getAllNotes().collect{
-               when(it){
-                   is ResultStatus.Error -> {
-                       _notesState.value = UiState.Error(it.error)
-                   }
-                   is ResultStatus.Loading -> {
-                       _notesState.value = UiState.Loading()
-                   }
-                   is ResultStatus.Success -> {
-                       if (it.data != null)
-                           _notesState.value = UiState.Success(it.data)
-                   }
-               }
-           }
-       }
+
+
+   fun getAllNotes(){
+      getAllNotesUseCase().collectFlow(_notesState)
+    }
+
+    fun deleteNote(note: Note){
+       deleteNoteUseCase(note).collectFlow(_deleteNoteState)
     }
 
 }
