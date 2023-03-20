@@ -42,12 +42,7 @@ class AddNoteViewModel @Inject constructor(
     fun editNote(note: Note) {
         if (note.title.isNotEmpty() && note.description.isNotBlank()) {
             editNoteUseCase(
-                Note(
-                    id = note.id,
-                    title = note.title,
-                    description = note.description,
-                    createAt = note.createAt
-                )
+               note
             ).collectFlow(_editNotesState)
 
         } else {
